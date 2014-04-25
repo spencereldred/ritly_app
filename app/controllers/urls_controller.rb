@@ -1,7 +1,8 @@
 class UrlsController < ApplicationController
   
   def index
-    @urls = Url.all
+    @urls = Url.all.sort
+
   end
 
   def new
@@ -13,9 +14,7 @@ class UrlsController < ApplicationController
   end
 
   def create
-    # binding.pry
     url = params[:url][:link]
-    # binding.pry
 
     # ??url[0..6].match ??
     if url[0] != 'h'
@@ -23,10 +22,7 @@ class UrlsController < ApplicationController
     end
     params[:url][:link] = url
 
-    # Rails 3 version: 
-    # Url.create(link: url, hash_code: SecureRandom.urlsafe_base64(8))
     random_url
-    # binding.pry
     @url = Url.create url_params
     redirect_to url_path(@url)
   end
@@ -36,8 +32,6 @@ class UrlsController < ApplicationController
   end
 
   def update
-    # binding.pry
-    # Url.update_attributes(link: url, hash_code: SecureRandom.urlsafe_base64(8))
     @url = Url.find(params[:id])
     random_url
     @url.update url_params

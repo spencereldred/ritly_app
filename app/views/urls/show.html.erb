@@ -1,12 +1,16 @@
 <h1>Individual Hash Code for <%= @url.link %>: </h1>
 <!-- TODO: use rails link_to commands -->
 
-<h2><li><%= @url.id %> -<%= @url.link %>- <a href="go/<%= @url.hash_code %>"><%= @url.hash_code %></a></li></h2>
+
+<h2><li><%= @url.id %> -<%= @url.link %>- 
+<%= link_to @url.hash_code, go_path(@url.hash_code) %>
 
 </br>
 
-<a href="/urls/<%= @url.id %>/edit">Edit</a>
-</br>
+<!-- <a href="/urls/<%#= @url.id %>/edit">Edit</a> -->
+
+<%= link_to "Edit", edit_url_path(@url.id), :class => 'btn btn-success'%>
+
 
 <br>
 <%= link_to "Home", root_path, :class => "btn btn-primary" %>

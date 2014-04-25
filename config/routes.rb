@@ -22,13 +22,16 @@ RitlyApp::Application.routes.draw do
   post '/urls', to: 'urls#create', as: :create 
 
 # Spencers-MacBook-Pro-2:ritly_app Spencer$ rake routes
-#  Prefix Verb URI Pattern                          Controller#Action
-#    root GET  /                                    urls#index
-#    urls GET  /urls/index(.:format)                urls#index
-# new_url GET  /urls/new(.:format)                  urls#new
-# preview GET  /go/:random_string/preview(.:format) urls#preview
-#      go GET  /go/:random_string(.:format)         urls#go
-#    show GET  /urls/:id/show(.:format)             urls#show
-#  create POST /urls(.:format)                      urls#create
+#   Prefix Verb  URI Pattern                       Controller#Action
+#     root GET   /                                 urls#index
+#     urls GET   /urls(.:format)                   urls#index
+#  new_url GET   /urls/new(.:format)               urls#new
+#      url GET   /urls/:id(.:format)               urls#show
+# edit_url GET   /urls/:id/edit(.:format)          urls#edit
+#          PATCH /urls/:id(.:format)               urls#update
+#  preview GET   /go/:id/preview(.:format)         urls#show
+#       go GET   /urls/go/:random_string(.:format) urls#redirection
+#     show GET   /urls/:id/show(.:format)          urls#show
+#   create POST  /urls(.:format)                   urls#create
 
 end
