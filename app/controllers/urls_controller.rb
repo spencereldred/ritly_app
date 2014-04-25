@@ -13,15 +13,20 @@ class UrlsController < ApplicationController
   end
 
   def create
-    url = params[:url]
     # binding.pry
+    url = params[:url][:link]
+    # binding.pry
+
+    # ??url[0..6].match ??
     if url[0] != 'h'
       url = "http://" + url
     end
+    params[:url][:link] = url
 
     # Rails 3 version: 
     # Url.create(link: url, hash_code: SecureRandom.urlsafe_base64(8))
-
+    random_url
+    # binding.pry
     @url = Url.create url_params
     redirect_to url_path(@url)
   end
@@ -31,32 +36,36 @@ class UrlsController < ApplicationController
   end
 
   def update
-    puts "&&&&&&&  We reached the update action with params[:url] = #{params[:url]}"
-    url = params[:url]
+    # binding.pry
     # Url.update_attributes(link: url, hash_code: SecureRandom.urlsafe_base64(8))
-    @url = Url.update url_params
+    @url = Url.find(params[:id])
+    random_url
+    @url.update url_params
     redirect_to url_path(@url)
   end
 
   def redirection
-    @url = Url.find_by_hash_code (params[:code])
-    puts @url.link
+    @url = Url.find_by_hash_code (params[:random_string])
     redirect_to @url.link
   end
 
   def preview
-    @url = Url.find_by_hash_code (params[:code])
+    @url = Url.find_by_hash_code (params[:hash_code])
     @link = @url.link
     render :preview
   end
 
   private
     def url_params
-      require(:url).permit(:link, :hash_code, :count) 
+      params.require(:url).permit(:link, :hash_code) 
+    end
+
+    def random_url
+      params[:url][:hash_code] = SecureRandom.urlsafe_base64(8)
     end
 
     def url_id
-      require(:url).permit(:id)
+      params.require(:url).permit(:id)
     end
 
 end

@@ -11,9 +11,11 @@ RitlyApp::Application.routes.draw do
 
   get 'urls/:id/edit', to: 'urls#edit', as: :edit_url
 
-  get '/go/:random_string/preview', to: 'urls#preview', as: :preview
+  patch 'urls/:id', to: 'urls#update'
 
-  get '/go/:random_string', to: 'urls#go', as: :go
+  get 'go/:id/preview', to: 'urls#show', as: :preview
+
+  get 'urls/go/:random_string', to: 'urls#redirection', as: :go
 
   get '/urls/:id/show', to: 'urls#show', as: :show
 

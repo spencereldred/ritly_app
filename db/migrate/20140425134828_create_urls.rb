@@ -3,7 +3,6 @@ class CreateUrls < ActiveRecord::Migration
     create_table :urls do |t|
       t.string :link
       t.string :hash_code
-      t.integer :count
 
       t.timestamps
     end

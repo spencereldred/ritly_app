@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 urls = Url.create([
-  {link: 'http:\\www.sfgate.com' , hash_code: 'abcdefg', count: 0}
+  {link: 'http://www.sfgate.com' , hash_code: 'abcdefg'}
 
 
   ])

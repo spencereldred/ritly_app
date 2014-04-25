@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20140425134828) do
   create_table "urls", force: true do |t|
     t.string   "link"
     t.string   "hash_code"
-    t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
