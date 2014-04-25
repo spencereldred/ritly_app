@@ -1,0 +1,24 @@
+<h1> Edit a Url </h1>
+
+<%= form_for @url do |f| %>
+  
+  <%= label_tag(:link, "Enter Url:") %>
+  <%= f.text_field :link,  :class => "form-control" %></br>
+
+  <!-- Submits the @todo object with the inputs to the create method in the TodosController. -->
+  <%= f.submit "Update Hash Code", :class => "btn btn-success" %>
+<% end %>
+<br>
+<%= link_to "Home", root_path, :class => "btn btn-primary" %>
+<hr>
+@url.inspect: <%= @url.inspect %>
+
+
+<!-- <form method="put" action="/urls/<%#= @url.id %>">
+  Enter Url: <input type="text" name="url" value="<%#= @url.link %>" ></br>
+  <input type="submit" value="Update Url Hash_Code">
+</form>
+</br>-->
+<!-- <a href="/urls/new">Create Hash Code</a> -->
+<!-- </br> -->
+<!-- <a href="/">Home</a>  -->

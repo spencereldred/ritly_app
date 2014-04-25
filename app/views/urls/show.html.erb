@@ -1,0 +1,15 @@
+<h1>Individual Hash Code for <%= @url.link %>: </h1>
+
+
+<h2><li><%= @url.id %> -<%= @url.link %>- <a href="/<%= @url.hash_code %>"><%= @url.hash_code %></a></li></h2>
+
+</br>
+<a href="/<%= @url.hash_code %>/preview">Preview</a>
+</br>
+<a href="/urls/<%= @url.id %>/edit">Edit</a>
+</br>
+
+<br>
+<%= link_to "Home", root_path, :class => "btn btn-primary" %>
+<hr>
+@url.inspect: <%= @url.inspect %>

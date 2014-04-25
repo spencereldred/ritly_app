@@ -1,7 +1,15 @@
 RitlyApp::Application.routes.draw do
-  get "urls/index"
   
+
   root to: 'urls#index'
+
+  get "urls", to: 'urls#index', as: :urls
+
+  get 'urls/new', to: 'urls#new', as: :new_url
+
+  get 'urls/:id', to: 'urls#show', as: :url
+
+  get 'urls/:id/edit', to: 'urls#edit', as: :edit_url
 
   get '/go/:random_string/preview', to: 'urls#preview', as: :preview
 
@@ -11,12 +19,14 @@ RitlyApp::Application.routes.draw do
 
   post '/urls', to: 'urls#create', as: :create 
 
-#   Spencers-MacBook-Pro-2:ritly_app Spencer$ rake routes
+# Spencers-MacBook-Pro-2:ritly_app Spencer$ rake routes
 #  Prefix Verb URI Pattern                          Controller#Action
-#    root GET  /                                    ritly#index
-# preview GET  /go/:random_string/preview(.:format) ritly#preview
-#      go GET  /go/:random_string(.:format)         ritly#go
-#    show GET  /ritly/:id/show(.:format)            ritly#show
-#  create POST /ritly(.:format)                     ritly#create
+#    root GET  /                                    urls#index
+#    urls GET  /urls/index(.:format)                urls#index
+# new_url GET  /urls/new(.:format)                  urls#new
+# preview GET  /go/:random_string/preview(.:format) urls#preview
+#      go GET  /go/:random_string(.:format)         urls#go
+#    show GET  /urls/:id/show(.:format)             urls#show
+#  create POST /urls(.:format)                      urls#create
 
 end
